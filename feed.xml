@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://ahmadimt.github.io/ahmadimt/feed.xml" rel="self" />
     <link href="https://ahmadimt.github.io/ahmadimt" />
-    <updated>2021-04-02T19:08:59+05:30</updated>
+    <updated>2021-04-02T19:21:58+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -16,8 +16,10 @@
         </author>
         <link href="https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/"/>
         <id>https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/</id>
+            <category term="Java"/>
+            <category term="Elasticsearch"/>
 
-        <updated>2021-04-02T19:08:59+05:30</updated>
+        <updated>2021-04-02T19:21:58+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg" alt="" />
