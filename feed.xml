@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>imteyazahmad.com</title>
-    <link href="https://ahmadimt.github.io/ahmadimt/feed.xml" rel="self" />
-    <link href="https://ahmadimt.github.io/ahmadimt" />
+    <link href="https://imteyazahmad.com/feed.xml" rel="self" />
+    <link href="https://imteyazahmad.com" />
     <updated>2021-04-02T19:21:58+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
-    <id>https://ahmadimt.github.io/ahmadimt</id>
+    <id>https://imteyazahmad.com</id>
 
     <entry>
         <title>Configuring Elasticsearch Java High Level Rest Client</title>
         <author>
             <name>Imteyaz Ahmad</name>
         </author>
-        <link href="https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/"/>
-        <id>https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/</id>
+        <link href="https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/"/>
+        <id>https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/</id>
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
         <updated>2021-04-02T19:21:58+05:30</updated>
             <summary>
                 <![CDATA[
-                        <img src="https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg" alt="" />
+                        <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920.jpg" alt="" />
                      This article describe how to configure the new Elasticsearch Java High&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg" alt="" />
+                    <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920.jpg" alt="" />
                 
   <p>
     This article describe how to configure the new Elasticsearch Java High level rest client in a Java Application.
