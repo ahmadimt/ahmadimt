@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>imteyazahmad.com</title>
+    <link href="https://ahmadimt.github.io/ahmadimt/feed.xml" rel="self" />
+    <link href="https://ahmadimt.github.io/ahmadimt" />
+    <updated>2021-04-02T19:08:59+05:30</updated>
+    <author>
+        <name>Imteyaz Ahmad</name>
+    </author>
+    <id>https://ahmadimt.github.io/ahmadimt</id>
+
+    <entry>
+        <title>Configuring Elasticsearch Java High Level Rest Client</title>
+        <author>
+            <name>Imteyaz Ahmad</name>
+        </author>
+        <link href="https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/"/>
+        <id>https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/</id>
+
+        <updated>2021-04-02T19:08:59+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg" alt="" />
+                     This article describe how to configure the new Elasticsearch Java High&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg" alt="" />
+                
+  <p>
+    This article describe how to configure the new Elasticsearch Java High level rest client in a Java Application.
+  </p>
+
+    <h2 id="introduction">
+      Introduction
+    </h2>
+
+  <p>
+    Elasticsearch&nbsp;5.0.0 released it first&nbsp;Java REST Client. This client was called low-level client as the Java users had to build the JSON request and parse the results. Later, Elasticsearch 5.6 introduced&nbsp;&nbsp;Java High Level REST Client which accepts&nbsp;request objects and returns response objects for the most important APIs(info, get, index, delete, update, bulk, search, search-scroll, and clear-scroll). For other APIs, we still have to use the low-level client.
+  </p>
+
+    <h2 id="dependencies">
+      Dependencies
+    </h2>
+
+  <p>
+    It depends of the following artifacts and their transitive dependencies:<br>
+  </p>
+
+  <ul>
+    <li>org.elasticsearch.client:elasticsearch-rest-client</li><li>org.elasticsearch:elasticsearch<br></li>
+  </ul>
+
+  <p>
+    The minimum Java version required is <code>1.8</code>.&nbsp;
+  </p>
+
+  <p>
+    If you are using maven then it can declared as follows
+  </p>
+<pre class="line-numbers  language-java"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.elasticsearch.client&lt;/groupId&gt;
+    &lt;artifactId&gt;elasticsearch-rest-high-level-client&lt;/artifactId&gt;
+    &lt;version&gt;${elasticsearch.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+  <p>
+    The Gradle users can declare the dependencies as
+  </p>
+<pre class="line-numbers  language-java"><code>dependencies {
+    compile "org.elasticsearch.client:elasticsearch-rest-high-level-client:${elasticsearch.version}"
+}  </code></pre>
+
+  <p>
+    Replace the <code>${elasticsearch.version}</code> as appropriate.
+  </p>
+
+    <h2 id="initialization">
+      Initialization
+    </h2>
+
+  <p>
+    The <code>RestHighLevelClient</code> is built on top of the REST low-level client builder. The following code will instantiate a low level <code>RestClientBuilder</code>.
+  </p>
+<pre class="line-numbers  language-java"><code>RestClientBuilder  restClientBuilder  = RestClient.builder(
+    new HttpHost("localhost", 9200, "http"),
+    new HttpHost("localhost", 9201, "http"));</code></pre>
+
+  <p>
+    If the Elasticsearch is secured with user name and password then we need to provide the credentials using the&nbsp;<code>CredentialsProvider</code> as shown below. After that we can set a callback that allows to modify the http client configuration.&nbsp;
+  </p>
+<pre class="line-numbers  language-java"><code>final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(
+        &lt;elasticSearchUsername&gt;, &lt;elasticSearchPassword&gt;));
+restClientBuilder.setHttpClientConfigCallback(new HttpClientConfigCallback() {
+      @Override
+      public HttpAsyncClientBuilder customizeHttpClient(
+          HttpAsyncClientBuilder httpClientBuilder) {
+        return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+      }
+    });
+/*
+Using the Java 8 syntax, we can replace the above code like this
+builder.setHttpClientConfigCallback(
+        httpClientBuilder -&gt; httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider));
+*/</code></pre>
+
+  <p>
+    After this we can initialize the&nbsp;<code>RestHighLevelClient</code> as follows
+  </p>
+<pre class="line-numbers  language-java"><code>RestHighLevelClient client = new RestHighLevelClient(restClientBuilder);</code></pre>
+
+    <h2 id="usage">
+      Usage
+    </h2>
+
+  <p>
+    Each APIs in High Level REST Client can be called synchronously or asynchronously. In case of synchronous call it returns a response object. It can throw an <code>IOException</code> if either of the following occurs:
+  </p>
+
+  <ul>
+    <li>The request times out.</li><li>The client fails to parse the REST response</li><li>There is no response coming back from the server<br></li>
+  </ul>
+<pre class="line-numbers  language-java"><code>SearchRequest searchRequest = new SearchRequest("posts");
+searchRequest.source(searchSourceBuilder);
+SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);  
+</code></pre>
+
+  <p>
+    The following shows how to call a method asynchronously. We need to define an <code>ActionListener</code> which define how to handle the response and error if any. The following shows the code example for that:
+  </p>
+<pre class="line-numbers  language-java"><code>// Asynchronous call example
+ActionListener&lt;SearchResponse&gt; listener = new ActionListener&lt;SearchResponse&gt;() {
+    @Override
+    public void onResponse(SearchResponse searchResponse) {
+         //write the logic to parse the search response. 
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        //Code to handle the exception goes here.
+    }
+};
+client.searchAsync(searchRequest, RequestOptions.DEFAULT, listener);
+
+</code></pre>
+
+    <h2 id="references">
+      References
+    </h2>
+
+  <ul>
+    <li>https://www.elastic.co/blog/state-of-the-official-elasticsearch-java-clients</li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-high.html<br></li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-low.html<br></li>
+  </ul>
+            ]]>
+        </content>
+    </entry>
+</feed>

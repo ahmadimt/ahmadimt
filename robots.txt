@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://ahmadimt.github.io/ahmadimt/sitemap.xml

@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Configuring Elasticsearch Java High Level Rest Client - imteyazahmad.com</title><meta name="description" content=" This article describe how to configure the new Elasticsearch Java High&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/"><link rel="alternate" type="application/atom+xml" href="https://ahmadimt.github.io/ahmadimt/feed.xml"><link rel="alternate" type="application/json" href="https://ahmadimt.github.io/ahmadimt/feed.json"><meta property="og:title" content="Configuring Elasticsearch Java High Level Rest Client"><meta property="og:image" content="https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg"><meta property="og:site_name" content="imteyazahmad.com"><meta property="og:description" content=" This article describe how to configure the new Elasticsearch Java High&hellip;"><meta property="og:url" content="https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@ahmad_imt"><meta name="twitter:title" content="Configuring Elasticsearch Java High Level Rest Client"><meta name="twitter:description" content=" This article describe how to configure the new Elasticsearch Java High&hellip;"><meta name="twitter:image" content="https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg"><style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style><link rel="stylesheet" href="https://ahmadimt.github.io/ahmadimt/assets/css/style.css?v=c6df6e421b80da00cc6b61a27634f5f8"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://ahmadimt.github.io/ahmadimt/configuring-elasticsearch-java-high-level-rest-client-2/"},"headline":"Configuring Elasticsearch Java High Level Rest Client","datePublished":"2021-04-02T17:05","dateModified":"2021-04-02T19:08","image":{"@type":"ImageObject","url":"https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg","height":1357,"width":1920},"description":" This article describe how to configure the new Elasticsearch Java High&hellip;","author":{"@type":"Person","name":"Imteyaz Ahmad"},"publisher":{"@type":"Organization","name":"Imteyaz Ahmad"}}</script></head><body><div class="container"><header class="header" id="js-header"><a href="https://ahmadimt.github.io/ahmadimt/" class="logo">imteyazahmad.com</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://ahmadimt.github.io/ahmadimt/authors/imteyaz-ahmad/" target="_self">About Me</a></li></ul></nav></header><main><article class="post wrapper"><header class="hero"><p class="post__meta">By <a href="https://ahmadimt.github.io/ahmadimt/authors/imteyaz-ahmad/" rel="author" title="Imteyaz Ahmad">Imteyaz Ahmad</a> Published on <time datetime="2021-04-02T17:05">April 2, 2021</time></p><h1 class="post__title">Configuring Elasticsearch Java High Level Rest Client</h1></header><figure class="post__featured-image post__image--normal"><img src="https://ahmadimt.github.io/ahmadimt/media/posts/3/ball-563972_1920.jpg" srcset="https://ahmadimt.github.io/ahmadimt/media/posts/3/responsive/ball-563972_1920-xs.jpg 300w, https://ahmadimt.github.io/ahmadimt/media/posts/3/responsive/ball-563972_1920-sm.jpg 480w, https://ahmadimt.github.io/ahmadimt/media/posts/3/responsive/ball-563972_1920-md.jpg 768w, https://ahmadimt.github.io/ahmadimt/media/posts/3/responsive/ball-563972_1920-lg.jpg 1024w, https://ahmadimt.github.io/ahmadimt/media/posts/3/responsive/ball-563972_1920-xl.jpg 1360w, https://ahmadimt.github.io/ahmadimt/media/posts/3/responsive/ball-563972_1920-2xl.jpg 1600w, https://ahmadimt.github.io/ahmadimt/media/posts/3/responsive/ball-563972_1920-sm2.jpg 375w" sizes="(max-width: 1600px) 100vw, 1600px" loading="eager" height="1357" width="1920" alt=""><figcaption>Image by Gerd Altmann from Pixabay</figcaption></figure><div class="post__entry"><p>This article describe how to configure the new Elasticsearch Java High level rest client in a Java Application.</p><h2 id="introduction">Introduction</h2><p>Elasticsearch&nbsp;5.0.0 released it first&nbsp;Java REST Client. This client was called low-level client as the Java users had to build the JSON request and parse the results. Later, Elasticsearch 5.6 introduced&nbsp;&nbsp;Java High Level REST Client which accepts&nbsp;request objects and returns response objects for the most important APIs(info, get, index, delete, update, bulk, search, search-scroll, and clear-scroll). For other APIs, we still have to use the low-level client.</p><h2 id="dependencies">Dependencies</h2><p>It depends of the following artifacts and their transitive dependencies:<br></p><ul><li>org.elasticsearch.client:elasticsearch-rest-client</li><li>org.elasticsearch:elasticsearch<br></li></ul><p>The minimum Java version required is <code>1.8</code>.&nbsp;</p><p>If you are using maven then it can declared as follows</p><pre class="line-numbers language-java"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.elasticsearch.client&lt;/groupId&gt;
+    &lt;artifactId&gt;elasticsearch-rest-high-level-client&lt;/artifactId&gt;
+    &lt;version&gt;${elasticsearch.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><p>The Gradle users can declare the dependencies as</p><pre class="line-numbers language-java"><code>dependencies {
+    compile "org.elasticsearch.client:elasticsearch-rest-high-level-client:${elasticsearch.version}"
+}  </code></pre><p>Replace the <code>${elasticsearch.version}</code> as appropriate.</p><h2 id="initialization">Initialization</h2><p>The <code>RestHighLevelClient</code> is built on top of the REST low-level client builder. The following code will instantiate a low level <code>RestClientBuilder</code>.</p><pre class="line-numbers language-java"><code>RestClientBuilder  restClientBuilder  = RestClient.builder(
+    new HttpHost("localhost", 9200, "http"),
+    new HttpHost("localhost", 9201, "http"));</code></pre><p>If the Elasticsearch is secured with user name and password then we need to provide the credentials using the&nbsp;<code>CredentialsProvider</code> as shown below. After that we can set a callback that allows to modify the http client configuration.&nbsp;</p><pre class="line-numbers language-java"><code>final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(
+        &lt;elasticSearchUsername&gt;, &lt;elasticSearchPassword&gt;));
+restClientBuilder.setHttpClientConfigCallback(new HttpClientConfigCallback() {
+      @Override
+      public HttpAsyncClientBuilder customizeHttpClient(
+          HttpAsyncClientBuilder httpClientBuilder) {
+        return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+      }
+    });
+/*
+Using the Java 8 syntax, we can replace the above code like this
+builder.setHttpClientConfigCallback(
+        httpClientBuilder -&gt; httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider));
+*/</code></pre><p>After this we can initialize the&nbsp;<code>RestHighLevelClient</code> as follows</p><pre class="line-numbers language-java"><code>RestHighLevelClient client = new RestHighLevelClient(restClientBuilder);</code></pre><h2 id="usage">Usage</h2><p>Each APIs in High Level REST Client can be called synchronously or asynchronously. In case of synchronous call it returns a response object. It can throw an <code>IOException</code> if either of the following occurs:</p><ul><li>The request times out.</li><li>The client fails to parse the REST response</li><li>There is no response coming back from the server<br></li></ul><pre class="line-numbers language-java"><code>SearchRequest searchRequest = new SearchRequest("posts");
+searchRequest.source(searchSourceBuilder);
+SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);  
+</code></pre><p>The following shows how to call a method asynchronously. We need to define an <code>ActionListener</code> which define how to handle the response and error if any. The following shows the code example for that:</p><pre class="line-numbers language-java"><code>// Asynchronous call example
+ActionListener&lt;SearchResponse&gt; listener = new ActionListener&lt;SearchResponse&gt;() {
+    @Override
+    public void onResponse(SearchResponse searchResponse) {
+         //write the logic to parse the search response. 
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        //Code to handle the exception goes here.
+    }
+};
+client.searchAsync(searchRequest, RequestOptions.DEFAULT, listener);
+
+</code></pre><h2 id="references">References</h2><ul><li>https://www.elastic.co/blog/state-of-the-official-elasticsearch-java-clients</li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-high.html<br></li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-low.html<br></li></ul></div><footer class="post__footer"><div class="post__last-updated">This article was updated on April 2, 2021</div><div class="post__footer__col"><div class="post__share"></div></div><div class="post__bio"><img src="https://ahmadimt.github.io/ahmadimt/media/website/1580139940845.jpeg" loading="lazy" alt="Imteyaz Ahmad"><div><h3><a href="https://ahmadimt.github.io/ahmadimt/authors/imteyaz-ahmad/" class="inverse" title="Imteyaz Ahmad">Imteyaz Ahmad</a></h3></div></div></footer></article></main><footer class="footer"><div class="footer__copyright">Powered by <a href="https://getpublii.com" target="_blank" rel="nofollow noopener">Publii</a></div></footer></div><script defer="defer" src="https://ahmadimt.github.io/ahmadimt/assets/js/scripts.min.js?v=c3bbc0611ea6a5405014eaca34fe1814"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar'};</script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script><div class="cookie-popup js-cookie-popup cookie-popup--uses-badge"><h2>This website uses cookies</h2><p>Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality. <a href="#not-specified">More details...</a></p><form><input id="gdpr-necessary" name="gdpr-necessary" checked="checked" disabled="disabled" type="checkbox"> <label for="gdpr-necessary">Required</label> <input id="gdpr-functions" name="gdpr-functions" type="checkbox"> <label for="gdpr-functions">Functionality</label> <input id="gdpr-analytics" name="gdpr-analytics" type="checkbox"> <label for="gdpr-analytics">Analytical</label> <input id="gdpr-marketing" name="gdpr-marketing" type="checkbox"> <label for="gdpr-marketing">Marketing</label><p class="cookie-popup__save-wrapper"><button type="submit" class="cookie-popup__save">Save</button></p></form><span class="cookie-popup-label">Cookie Policy</span></div><script>(function() {
+                function addScript (src, inline) {
+                    var newScript = document.createElement('script');
+
+                    if (src) {
+                        newScript.setAttribute('src', src);
+                    }
+
+                    if (inline) {
+                        newScript.text = inline;
+                    }
+
+                    document.body.appendChild(newScript);
+                }
+
+                var popup = document.querySelector('.js-cookie-popup');
+                var checkboxes = popup.querySelectorAll('input[type="checkbox"]');
+                var save = popup.querySelector('button');
+                var currentConfig = localStorage.getItem('publii-gdpr-allowed-cookies');
+                var blockedScripts = document.querySelectorAll('script[type^="gdpr-blocker/"]');
+                
+
+                popup.addEventListener('click', function() {
+                    if (!popup.classList.contains('cookie-popup--is-sticky')) {
+                        popup.classList.add('cookie-popup--is-sticky');
+                    }
+                });
+
+                save.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    popup.classList.remove('cookie-popup--is-sticky');
+                    var allowedGroups = [];
+
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            var groupName = checkboxes[i].getAttribute('name').replace('gdpr-', '');
+                            var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + groupName + '"]');
+
+                            for (var j = 0; j < scripts.length; j++) {
+                                addScript(scripts[j].src, scripts[j].text);
+                            }
+
+                            allowedGroups.push(groupName);
+                        }
+                    }
+
+                    localStorage.setItem('publii-gdpr-allowed-cookies', allowedGroups.join(','));
+                    popup.classList.remove('cookie-popup--is-sticky');
+
+                    setTimeout(function () {
+                        if (currentConfig !== null) {
+                            window.location.reload();
+                        }
+                    }, 250);
+                });
+
+                if (currentConfig === null) {
+                    popup.classList.add('cookie-popup--is-sticky');
+                    var checkedGroups = popup.querySelectorAll('input[type="checkbox"]:checked');
+
+                    for (var i = 0; i < checkedGroups.length; i++) {
+                        var allowedGroup = checkedGroups[i].name.replace('gdpr-', '');
+
+                        if (allowedGroup !== '-' && allowedGroup !== '') {
+                            var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroup + '"]');
+
+                            for (var j = 0; j < scripts.length; j++) {
+                                addScript(scripts[j].src, scripts[j].text);
+                            }
+                        }
+                    }
+                } else {
+                    if (currentConfig !== '') {
+                        var allowedGroups = currentConfig.split(',');
+                        var checkedCheckboxes = popup.querySelectorAll('input[type="checkbox"]:checked');
+
+                        for (var j = 0; j < checkedCheckboxes.length; j++) {
+                            var name = checkedCheckboxes[j].name.replace('gdpr-', '');
+
+                            if (allowedGroups.indexOf(name) === -1) {
+                                checkedCheckboxes[j].checked = false;
+                            }
+                        }
+
+                        for (var i = 0; i < allowedGroups.length; i++) {
+                            var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroups[i] + '"]');
+                            var checkbox = popup.querySelector('input[type="checkbox"][name="gdpr-' + allowedGroups[i] + '"]');
+
+                            if (checkbox) {
+                                checkbox.checked = true;
+                            }
+
+                            for (var j = 0; j < scripts.length; j++) {
+                                addScript(scripts[j].src, scripts[j].text);
+                            }
+                        }
+                    }
+                }
+            })();</script></body></html>
