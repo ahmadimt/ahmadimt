@@ -3,14 +3,14 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-02T19:21:58+05:30</updated>
+    <updated>2021-04-03T20:43:17+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
     <id>https://imteyazahmad.com</id>
 
     <entry>
-        <title>Configuring Elasticsearch Java High Level Rest Client</title>
+        <title>Elasticsearch: Java High Level Rest Client</title>
         <author>
             <name>Imteyaz Ahmad</name>
         </author>
@@ -19,7 +19,7 @@
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
-        <updated>2021-04-02T19:21:58+05:30</updated>
+        <updated>2021-04-03T20:43:17+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920.jpg" alt="" />
