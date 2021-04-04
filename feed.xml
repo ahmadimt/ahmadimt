@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-04T09:29:36+05:30</updated>
+    <updated>2021-04-04T13:15:20+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -19,7 +19,7 @@
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
-        <updated>2021-04-04T09:29:36+05:30</updated>
+        <updated>2021-04-04T13:15:20+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920.jpg" alt="" />
@@ -154,12 +154,16 @@ client.searchAsync(searchRequest, RequestOptions.DEFAULT, listener);
   </p>
 <pre class="line-numbers  language-java"><code>client.close();</code></pre>
 
+  <p>
+    A working code example is present in <a href="https://github.com/ahmadimt/elasticsearch_samples/tree/main/high_level_rest_client" target="_blank">this git repository</a>.
+  </p>
+
     <h2 id="references">
       References
     </h2>
 
   <ul>
-    <li>https://www.elastic.co/blog/state-of-the-official-elasticsearch-java-clients</li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-high.html<br></li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-low.html<br></li>
+    <li>https://github.com/ahmadimt/elasticsearch_samples/tree/main/high_level_rest_client<br></li><li>https://www.elastic.co/blog/state-of-the-official-elasticsearch-java-clients</li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-high.html<br></li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-low.html<br></li><li>https://pixabay.com/illustrations/ball-round-cable-lan-connected-563972/<br></li>
   </ul>
 <hr class="separator separator--dots" />
 
