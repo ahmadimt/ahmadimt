@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-07T17:52:30+05:30</updated>
+    <updated>2021-04-07T19:16:59+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -20,7 +20,7 @@
             <category term="Elasticsearch"/>
             <category term="Analytics"/>
 
-        <updated>2021-04-07T17:52:30+05:30</updated>
+        <updated>2021-04-07T19:16:59+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920.jpg" alt="" />
@@ -87,7 +87,7 @@ curl -XGET http://localhost:9200/accounts/_count
   <p>
     Now, we will create the same query using Elasticsearch high level rest client.
   </p>
-<pre class="line-numbers  language-java"><code>#First we need a bool query with a range filter
+<pre class="line-numbers  language-java"><code>//First we need a bool query with a range filter
 final var boolQueryBuilder = QueryBuilders.boolQuery();
     boolQueryBuilder
         .filter(QueryBuilders.rangeQuery("balance")
@@ -95,13 +95,13 @@ final var boolQueryBuilder = QueryBuilders.boolQuery();
                 .includeLower(true)
                 .includeUpper(false));
 
-#After this we provide this to SearchSourceBuilder
+//After this we provide this to SearchSourceBuilder
 final var searchSourceBuilder = new SearchSourceBuilder();
 searchSourceBuilder.size(1000);
 searchSourceBuilder.query(boolQueryBuilder);
 searchSourceBuilder.sort("balance");
 
-#And pass this source  builder to search request
+//And pass this source  builder to search request
 final var searchRequest = new SearchRequest();
 searchRequest.indices("accounts");
 searchRequest.source(searchSourceBuilder);
