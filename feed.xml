@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-07T19:16:59+05:30</updated>
+    <updated>2021-04-07T19:32:43+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -20,16 +20,16 @@
             <category term="Elasticsearch"/>
             <category term="Analytics"/>
 
-        <updated>2021-04-07T19:16:59+05:30</updated>
+        <updated>2021-04-07T19:31:50+05:30</updated>
             <summary>
                 <![CDATA[
-                        <img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920.jpg" alt="" />
+                        <img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920-2.jpg" alt="" />
                      In the previous post we saw how to configure Elasticsearch Java&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920.jpg" alt="" />
+                    <img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920-2.jpg" alt="" />
                 
   <p>
     In the <a href="https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/">previous post</a> we saw how to configure Elasticsearch Java high level rest client. In this post we are going to discuss how to make search request using the same.
@@ -163,16 +163,16 @@ final var customers = Arrays.stream(hits)
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
-        <updated>2021-04-04T13:15:20+05:30</updated>
+        <updated>2021-04-07T19:32:43+05:30</updated>
             <summary>
                 <![CDATA[
-                        <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920.jpg" alt="" />
+                        <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920-2.jpg" alt="" />
                      This article describe how to configure the new Elasticsearch Java High&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920.jpg" alt="" />
+                    <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920-2.jpg" alt="" />
                 
   <p>
     This article describe how to configure the new Elasticsearch Java High level rest client in a Java Application.
