@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Elasticsearch: Query using Java High Level Rest Client - imteyazahmad.com</title><meta name="description" content=" In the previous post we saw how to configure Elasticsearch Java&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://imteyazahmad.com/elasticsearch-searching-using-java-high-level-rest-client/"><link rel="amphtml" href="https://imteyazahmad.com/amp/elasticsearch-searching-using-java-high-level-rest-client/"><link rel="alternate" type="application/atom+xml" href="https://imteyazahmad.com/feed.xml"><link rel="alternate" type="application/json" href="https://imteyazahmad.com/feed.json"><meta property="og:title" content="Elasticsearch: Query using Java High Level Rest Client"><meta property="og:image" content="https://imteyazahmad.com/media/posts/4/hand-1248053_1920.jpg"><meta property="og:site_name" content="imteyazahmad.com"><meta property="og:description" content=" In the previous post we saw how to configure Elasticsearch Java&hellip;"><meta property="og:url" content="https://imteyazahmad.com/elasticsearch-searching-using-java-high-level-rest-client/"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@ahmad_imt"><meta name="twitter:title" content="Elasticsearch: Query using Java High Level Rest Client"><meta name="twitter:description" content=" In the previous post we saw how to configure Elasticsearch Java&hellip;"><meta name="twitter:image" content="https://imteyazahmad.com/media/posts/4/hand-1248053_1920.jpg"><link rel="shortcut icon" href="https://imteyazahmad.com/media/website/favicon.ico" type="image/x-icon"><style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style><link rel="stylesheet" href="https://imteyazahmad.com/assets/css/style.css?v=ae37e7df1e4b7b6e1b8a7bfccb475079"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://imteyazahmad.com/elasticsearch-searching-using-java-high-level-rest-client/"},"headline":"Elasticsearch: Query using Java High Level Rest Client","datePublished":"2021-04-07T10:03","dateModified":"2021-04-07T16:41","image":{"@type":"ImageObject","url":"https://imteyazahmad.com/media/posts/4/hand-1248053_1920.jpg","height":1308,"width":1920},"description":" In the previous post we saw how to configure Elasticsearch Java&hellip;","author":{"@type":"Person","name":"Imteyaz Ahmad"},"publisher":{"@type":"Organization","name":"Imteyaz Ahmad"}}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-T957TM7KCN"></script><script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T957TM7KCN');</script></head><body><div class="container"><header class="header" id="js-header"><a href="https://imteyazahmad.com/" class="logo">imteyazahmad.com</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://imteyazahmad.com/authors/imteyaz-ahmad/" target="_self">About Me</a></li></ul></nav></header><main><article class="post wrapper"><header class="hero"><p class="post__meta">By <a href="https://imteyazahmad.com/authors/imteyaz-ahmad/" rel="author" title="Imteyaz Ahmad">Imteyaz Ahmad</a> Published on <time datetime="2021-04-07T10:03">April 7, 2021</time></p><h1 class="post__title">Elasticsearch: Query using Java High Level Rest Client</h1></header><figure class="post__featured-image post__image--normal"><img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920.jpg" srcset="https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-xs.jpg 300w, https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-sm.jpg 480w, https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-md.jpg 768w, https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-lg.jpg 1024w, https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-xl.jpg 1360w, https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-2xl.jpg 1600w, https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-sm2.jpg 375w" sizes="(max-width: 1600px) 100vw, 1600px" loading="eager" height="1308" width="1920" alt=""><figcaption>Image by Gerd Altmann from Pixabay</figcaption></figure><div class="post__entry"><p>In the <a href="https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/">previous post</a> we saw how to configure Elasticsearch Java high level rest client. In this post we are going to discuss how to make search request using the same.</p><h2 id="introduction">Introduction</h2><p>Once we have configured our Elasticsearch Java high level rest client, it won't be useful if we don't make it work. Here we are going to use it to make some queries and see the result. We will use some fake data here.</p><h5 id="adding-data">Adding Data</h5><p>We can download data from <a href="https://github.com/elastic/elasticsearch/blob/master/docs/src/test/resources/accounts.json" target="_blank" rel="nofollow noopener">Elasticsearch repository</a>. If you are using Linux the we can download the data as shown&nbsp; below:</p><pre class="line-numbers language-java"><code>wget https://github.com/elastic/elasticsearch/blob/master/docs/src/test/resources/accounts.json?raw=true -O accounts.json     
+</code></pre><p>Once downloaded, run the below commands to insert data into Elasticsearch&nbsp;</p><pre class="line-numbers language-bash"><code># Create an index named "accounts"
+curl XPUT http://localhost:9200/accounts
+# Bulk insert data into this index
+curl -s -H "Content-Type: application/x-ndjson" -XPOST http://localhost:9200/accounts/_bulk --data-binary @accounts.json
+# once this is done we can verify the data
+curl -XGET http://localhost:9200/accounts/_count
+#this should return something like this  
+{"count":1000,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
+</code></pre><h2 id="query-preparation">Query Preparation</h2><p>With the data in place we want to know the followings:</p><ul><li>How many users have balance between 1000-2000?</li></ul><p>First let's see the JSON query for the same:</p><pre class="line-numbers language-json"><code>POST accounts/_search
+{"size":10000,"query":{"bool":{"filter":[{"range":{"balance":{"gte":1000,"lte":2000}}}]}},"sort":[{"balance":{"order":"desc"}}]}</code></pre><p>Now, we will create the same query using Elasticsearch high level rest client.</p><pre class="line-numbers language-java"><code>#First we need a bool query with a range filter
+final var boolQueryBuilder = QueryBuilders.boolQuery();
+    boolQueryBuilder
+        .filter(QueryBuilders.rangeQuery("balance")
+                .gte(1000).lte(2000)
+                .includeLower(true)
+                .includeUpper(false));
+
+#After this we provide this to SearchSourceBuilder
+final var searchSourceBuilder = new SearchSourceBuilder();
+searchSourceBuilder.size(1000);
+searchSourceBuilder.query(boolQueryBuilder);
+searchSourceBuilder.sort("balance");
+
+#And pass this source  builder to search request
+final var searchRequest = new SearchRequest();
+searchRequest.indices("accounts");
+searchRequest.source(searchSourceBuilder);
+
+</code></pre><p>Once that's done, we need to use the <code>HighLevelRestClient</code> to call Elasticsearch</p><pre class="line-numbers language-json"><code>final ElasticsearchConfig elasticsearchConfig = new ElasticsearchConfig();
+final RestHighLevelClient restHighLevelClient = elasticsearchConfig.restHighLevelClient();
+final var searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+</code></pre><p>After this we can parse the result as shown below:</p><pre class="line-numbers language-java"><code>final var hits = searchResponse.getHits().getHits();
+final var customers = Arrays.stream(hits)
+        .map(SearchHit::getSourceAsMap)
+        // Here we are mapping the data to string. you can also map to some object like Account
+        .map(stringObjectMap -&gt; "Name: " + stringObjectMap.get("firstname") + " "
+            + stringObjectMap.get("lastname") + ", Balance: " + stringObjectMap.get("balance"))
+        .collect(Collectors.toList());</code></pre><p>A working code example is present in this git repository.</p><h2 id="references">References</h2><ul><li>https://github.com/elastic/elasticsearch/blob/master/docs/src/test/resources/accounts.json</li><li>https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1248053</li><li>https://qbox.io/blog/understanding-bulk-indexing-in-elasticsearch/<br></li><li>https://pixabay.com/illustrations/hand-magnifying-glass-earth-globe-1248053/<br></li></ul><p></p><p></p><p></p></div><footer class="post__footer"><div class="post__last-updated">This article was updated on April 7, 2021</div><div class="post__footer__col"><div class="post__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fimteyazahmad.com%2Felasticsearch-searching-using-java-high-level-rest-client%2F" class="js-share facebook" aria-label="Share with Facebook" rel="nofollow noopener noreferrer"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#facebook"/></svg> </a><a href="https://twitter.com/share?url=https%3A%2F%2Fimteyazahmad.com%2Felasticsearch-searching-using-java-high-level-rest-client%2F&amp;via=ahmad_imt&amp;text=Elasticsearch%3A%20Query%20using%20Java%20High%20Level%20Rest%20Client" class="js-share twitter" aria-label="Share with Twitter" rel="nofollow noopener noreferrer"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#twitter"/></svg> </a><a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fimteyazahmad.com%2Felasticsearch-searching-using-java-high-level-rest-client%2F&amp;media=https%3A%2F%2Fimteyazahmad.com%2Fmedia%2Fposts%2F4%2Fhand-1248053_1920.jpg&amp;description=Elasticsearch%3A%20Query%20using%20Java%20High%20Level%20Rest%20Client" class="js-share pinterest" aria-label="[MISSING TRANSLATION] Share with Pinterest" rel="nofollow noopener noreferrer"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#pinterest"/></svg> </a><a href="https://mix.com/add?url=https%3A%2F%2Fimteyazahmad.com%2Felasticsearch-searching-using-java-high-level-rest-client%2F" class="js-share mix" aria-label="Share with Mix" rel="nofollow noopener noreferrer"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#mix"/></svg> </a><a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2Fimteyazahmad.com%2Felasticsearch-searching-using-java-high-level-rest-client%2F&amp;title=Elasticsearch%3A%20Query%20using%20Java%20High%20Level%20Rest%20Client" class="js-share linkedin" aria-label="Share with LinkedIn" rel="nofollow noopener noreferrer"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#linkedin"/></svg> </a><a href="https://buffer.com/add?text=Elasticsearch%3A%20Query%20using%20Java%20High%20Level%20Rest%20Client&amp;url=https%3A%2F%2Fimteyazahmad.com%2Felasticsearch-searching-using-java-high-level-rest-client%2F" class="js-share buffer" aria-label="Share with Buffer" rel="nofollow noopener noreferrer"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#buffer"/></svg> </a><a href="https://api.whatsapp.com/send?text=Elasticsearch%3A%20Query%20using%20Java%20High%20Level%20Rest%20Client https%3A%2F%2Fimteyazahmad.com%2Felasticsearch-searching-using-java-high-level-rest-client%2F" class="js-share whatsapp" aria-label="Share with Whats App" rel="nofollow noopener noreferrer"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#whatsapp"/></svg></a></div></div><nav class="post__nav"><div class="post__nav__prev">Previous Post<h5><a href="https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/" class="inverse" rel="prev">Elasticsearch: Java High Level Rest Client</a></h5></div></nav><div class="post__bio"><img src="https://imteyazahmad.com/media/website/1580139940845.jpeg" loading="lazy" alt="Imteyaz Ahmad"><div><h3><a href="https://imteyazahmad.com/authors/imteyaz-ahmad/" class="inverse" title="Imteyaz Ahmad">Imteyaz Ahmad</a></h3></div></div><div class="post__related"><h3 class="u-h5">Related posts</h3><div class="post__related__wrap"><figure><a href="https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/"><img src="https://imteyazahmad.com/media/posts/3/responsive/ball-563972_1920-xs.jpg" loading="lazy" alt=""></a><figcaption><h4><a href="https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/" class="inverse">Elasticsearch: Java High Level Rest Client</a></h4><time datetime="2021-04-02T17:05">April 2, 2021</time></figcaption></figure></div></div></footer></article><div class="comments wrapper"><h3 class="u-h5">Comments</h3><div id="disqus_thread"></div><script>var disqus_config = function () {
+                    this.page.url = 'https://imteyazahmad.com/elasticsearch-searching-using-java-high-level-rest-client/';
+            		this.page.identifier = '4';
+                };
+            
+                var disqus_loaded = false;
+            
+                function publiiLoadDisqus() {
+                    if(disqus_loaded) {
+                        return false;
+                    }
+            
+                    var top = document.getElementById('disqus_thread').offsetTop;
+            
+                    if (!disqus_loaded && (window.scrollY || window.pageYOffset) + window.innerHeight > top) {
+                        disqus_loaded = true;
+            
+                        (function () {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://imteyazahmad.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    }
+                }
+            
+                publiiLoadDisqus();
+            
+                window.onscroll = function() {
+                    publiiLoadDisqus();
+                };</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div></main><footer class="footer"><div class="footer__copyright">© <a href="https://imteyazahmad.com/" target="_blank" rel="nofollow noopener">Imteyaz Ahmad</a></div><div class="footer__social"><a href="ahmad_imt" class="twitter" aria-label="Twitter"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#twitter"/></svg> </a><a href="https://www.linkedin.com/in/imteyaz-ahmad-09b66b28/" class="linkedin" aria-label="LinkedIn"><svg class="icon"><use xlink:href="https://imteyazahmad.com/assets/svg/svg-map.svg#linkedin"/></svg></a></div></footer></div><script defer="defer" src="https://imteyazahmad.com/assets/js/scripts.min.js?v=c3bbc0611ea6a5405014eaca34fe1814"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar'};</script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script><div class="cookie-popup js-cookie-popup cookie-popup--uses-badge"><h2>This website uses cookies</h2><p>Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality. <a href="#not-specified">More details...</a></p><form><input id="gdpr-necessary" name="gdpr-necessary" checked="checked" disabled="disabled" type="checkbox"> <label for="gdpr-necessary">Required</label> <input id="gdpr-functions" name="gdpr-functions" type="checkbox"> <label for="gdpr-functions">Functionality</label> <input id="gdpr-analytics" name="gdpr-analytics" type="checkbox"> <label for="gdpr-analytics">Analytical</label> <input id="gdpr-marketing" name="gdpr-marketing" type="checkbox"> <label for="gdpr-marketing">Marketing</label><p class="cookie-popup__save-wrapper"><button type="submit" class="cookie-popup__save">Save</button></p></form><span class="cookie-popup-label">Cookie Policy</span></div><script>(function() {
+                function addScript (src, inline) {
+                    var newScript = document.createElement('script');
+
+                    if (src) {
+                        newScript.setAttribute('src', src);
+                    }
+
+                    if (inline) {
+                        newScript.text = inline;
+                    }
+
+                    document.body.appendChild(newScript);
+                }
+
+                var popup = document.querySelector('.js-cookie-popup');
+                var checkboxes = popup.querySelectorAll('input[type="checkbox"]');
+                var save = popup.querySelector('button');
+                var currentConfig = localStorage.getItem('publii-gdpr-allowed-cookies');
+                var blockedScripts = document.querySelectorAll('script[type^="gdpr-blocker/"]');
+                
+
+                popup.addEventListener('click', function() {
+                    if (!popup.classList.contains('cookie-popup--is-sticky')) {
+                        popup.classList.add('cookie-popup--is-sticky');
+                    }
+                });
+
+                save.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    popup.classList.remove('cookie-popup--is-sticky');
+                    var allowedGroups = [];
+
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            var groupName = checkboxes[i].getAttribute('name').replace('gdpr-', '');
+                            var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + groupName + '"]');
+
+                            for (var j = 0; j < scripts.length; j++) {
+                                addScript(scripts[j].src, scripts[j].text);
+                            }
+
+                            allowedGroups.push(groupName);
+                        }
+                    }
+
+                    localStorage.setItem('publii-gdpr-allowed-cookies', allowedGroups.join(','));
+                    popup.classList.remove('cookie-popup--is-sticky');
+
+                    setTimeout(function () {
+                        if (currentConfig !== null) {
+                            window.location.reload();
+                        }
+                    }, 250);
+                });
+
+                if (currentConfig === null) {
+                    popup.classList.add('cookie-popup--is-sticky');
+                    var checkedGroups = popup.querySelectorAll('input[type="checkbox"]:checked');
+
+                    for (var i = 0; i < checkedGroups.length; i++) {
+                        var allowedGroup = checkedGroups[i].name.replace('gdpr-', '');
+
+                        if (allowedGroup !== '-' && allowedGroup !== '') {
+                            var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroup + '"]');
+
+                            for (var j = 0; j < scripts.length; j++) {
+                                addScript(scripts[j].src, scripts[j].text);
+                            }
+                        }
+                    }
+                } else {
+                    if (currentConfig !== '') {
+                        var allowedGroups = currentConfig.split(',');
+                        var checkedCheckboxes = popup.querySelectorAll('input[type="checkbox"]:checked');
+
+                        for (var j = 0; j < checkedCheckboxes.length; j++) {
+                            var name = checkedCheckboxes[j].name.replace('gdpr-', '');
+
+                            if (allowedGroups.indexOf(name) === -1) {
+                                checkedCheckboxes[j].checked = false;
+                            }
+                        }
+
+                        for (var i = 0; i < allowedGroups.length; i++) {
+                            var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroups[i] + '"]');
+                            var checkbox = popup.querySelector('input[type="checkbox"][name="gdpr-' + allowedGroups[i] + '"]');
+
+                            if (checkbox) {
+                                checkbox.checked = true;
+                            }
+
+                            for (var j = 0; j < scripts.length; j++) {
+                                addScript(scripts[j].src, scripts[j].text);
+                            }
+                        }
+                    }
+                }
+            })();</script></body></html>
