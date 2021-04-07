@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-07T16:41:28+05:30</updated>
+    <updated>2021-04-07T16:50:19+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -17,7 +17,7 @@
         <link href="https://imteyazahmad.com/elasticsearch-searching-using-java-high-level-rest-client/"/>
         <id>https://imteyazahmad.com/elasticsearch-searching-using-java-high-level-rest-client/</id>
 
-        <updated>2021-04-07T16:41:28+05:30</updated>
+        <updated>2021-04-07T16:50:19+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920.jpg" alt="" />
@@ -125,7 +125,7 @@ final var customers = Arrays.stream(hits)
         .collect(Collectors.toList());</code></pre>
 
   <p>
-    A working code example is present in this git repository.
+    A working code example is present in this <a href="https://github.com/ahmadimt/elasticsearch_samples/tree/main/query_high_level_rest_client" target="_blank">git repository</a>.
   </p>
 
     <h2 id="references">
