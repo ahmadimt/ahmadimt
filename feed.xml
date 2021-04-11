@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-10T20:31:12+05:30</updated>
+    <updated>2021-04-11T09:44:22+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -16,10 +16,11 @@
         </author>
         <link href="https://imteyazahmad.com/elasticsearch-bulk-insert-using/"/>
         <id>https://imteyazahmad.com/elasticsearch-bulk-insert-using/</id>
+            <category term="high level rest client"/>
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
-        <updated>2021-04-10T20:31:12+05:30</updated>
+        <updated>2021-04-11T09:44:10+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/6/dance-schools-1837658_cropped-2.jpg" alt="" />
@@ -189,11 +190,12 @@ public class AccountManager {
         </author>
         <link href="https://imteyazahmad.com/elasticsearch-searching-using-java-high-level-rest-client/"/>
         <id>https://imteyazahmad.com/elasticsearch-searching-using-java-high-level-rest-client/</id>
+            <category term="high level rest client"/>
             <category term="Java"/>
             <category term="Elasticsearch"/>
             <category term="Analytics"/>
 
-        <updated>2021-04-07T19:31:50+05:30</updated>
+        <updated>2021-04-11T09:44:22+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920-2.jpg" alt="" />
@@ -333,10 +335,11 @@ final var customers = Arrays.stream(hits)
         </author>
         <link href="https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/"/>
         <id>https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/</id>
+            <category term="high level rest client"/>
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
-        <updated>2021-04-10T10:38:47+05:30</updated>
+        <updated>2021-04-11T09:44:01+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920-2.jpg" alt="" />

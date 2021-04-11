@@ -1,4 +1,4 @@
-<!doctype html><html amp lang="en-us"><head><meta charset="utf-8"><title>Elasticsearch: Bulk Insert using Java High Level Rest Client - imteyazahmad.com</title><meta name="description" content=" In our previous post, we saw how to insert data into&hellip;"><link rel="canonical" href="https://imteyazahmad.com/elasticsearch-bulk-insert-using/"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" type="text/css"><script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script><script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script><script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script><script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://imteyazahmad.com/amp/elasticsearch-bulk-insert-using/"},"headline":"Elasticsearch: Bulk Insert using Java High Level Rest Client","datePublished":"2021-04-10T09:46","dateModified":"2021-04-11T09:44","image":{"@type":"ImageObject","url":"https://imteyazahmad.com/media/posts/6/dance-schools-1837658_cropped-2.jpg","height":1280,"width":1920},"description":" In our previous post, we saw how to insert data into&hellip;","author":{"@type":"Person","name":"Imteyaz Ahmad"},"publisher":{"@type":"Organization","name":"Imteyaz Ahmad"}}</script><style amp-custom>article,
+<!doctype html><html amp lang="en-us"><head><meta charset="utf-8"><title>Tag: high level rest client - imteyazahmad.com</title><link rel="canonical" href="https://imteyazahmad.com/tags/high-level-rest-client/"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" type="text/css"><script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script><script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script><script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script><script type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"imteyazahmad.com","url":"https://imteyazahmad.com/amp/","sameAs":["ahmad_imt","https://www.linkedin.com/in/imteyaz-ahmad-09b66b28/"]}</script><style amp-custom>article,
 aside,
 footer,
 header,
@@ -553,97 +553,7 @@ aside {
   background: #039be5;
   color: #ffffff;
   padding: 1.06667rem 4%;
-  text-align: center; }</style><style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><script async src="https://cdn.ampproject.org/v0.js"></script><script custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js" async></script><script custom-element="amp-position-observer" src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js" async></script></head><body class="bg-white"><nav class="navbar wrap-inner" id="top"><div><a on="tap:navbar-sidebar.toggle" class="navbar-sidebar-toggle" title="Menu">Menu</a> <a class="logo logo-text" href="https://imteyazahmad.com/amp/">imteyazahmad.com</a></div></nav><main class="wrap-page"><article class="post"><figure class="post-featured-image"><amp-img src="https://imteyazahmad.com/media/posts/6/dance-schools-1837658_cropped-2.jpg" alt="" srcset="https://imteyazahmad.com/media/posts/6/responsive/dance-schools-1837658_cropped-2-xs.jpg 300w ,https://imteyazahmad.com/media/posts/6/responsive/dance-schools-1837658_cropped-2-sm.jpg 480w ,https://imteyazahmad.com/media/posts/6/responsive/dance-schools-1837658_cropped-2-md.jpg 768w" sizes="(max-width: 768px) 100vw, 768px" height="1280" layout="responsive" width="1920"></amp-img><figcaption>Image by Hans Braxmeier from Pixabay</figcaption></figure><div class="wrap-inner"><header class="post-header"><h1>Elasticsearch: Bulk Insert using Java High Level Rest Client</h1><p class="post-meta">By <a href="https://imteyazahmad.com/amp/authors/imteyaz-ahmad/" rel="nofollow" title="Imteyaz Ahmad">Imteyaz Ahmad</a> <time datetime="2021-04-10T09:46">April 10, 2021</time></p></header><p id="introduction">In our <a href="https://imteyazahmad.com/amp/elasticsearch-searching-using-java-high-level-rest-client/" target="_blank">previous post</a>, we saw how to insert data into Elasticsearch using the&nbsp;<code>curl</code> command. In this post, we will use Java High Level Rest Client to achieve the same.</p><h2 id="introduction">Introduction</h2><p>For any use case, data is essential. If we already have some data in&nbsp;Elasticsearch, we can use it. Otherwise, we will have to insert some data into it. In this post, we will see how to bulk insert data using Java High Level Rest Client. The details about instantiating and configuring&nbsp;the client can be found <a href="https://imteyazahmad.com/amp/configuring-elasticsearch-java-high-level-rest-client-2/" target="_blank">here</a>.</p><h2 id="data-preparation">Data Preparation</h2><p>We will use the accounts data present <a href="https://github.com/ahmadimt/elasticsearch_samples/blob/main/bulk_insert/app/src/main/resources/accounts.json" target="_blank" rel="nofollow noopener">here</a>. The following represents a single document in the <code>accounts</code> index in Elasticsearch:</p><pre class="line-numbers language-json"><code>{"account_number":1,"balance":39225,"firstname":"Amber","lastname":"Duke","age":32,"gender":"M","address":"880 Holmes Lane","employer":"Pyrami","email":"amberduke@pyrami.com","city":"Brogan","state":"IL"}</code></pre><h2 id="writing-datanbsp">Writing Data&nbsp;</h2><p>Let's create an <code>Account</code> class that represents a single document as shown above in the index.&nbsp;</p><pre class="line-numbers language-java"><code>public class Account {     
-private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();   
-@JsonProperty("account_number")
-private long accountNumber;
-@JsonProperty("balance")
-private long balance;
-@JsonProperty("firstname")
-private String firstname;
-@JsonProperty("lastname")
-private String lastname;
-@JsonProperty("age")
-private int age;
-@JsonProperty("gender")
-private String gender;
-@JsonProperty("address")
-private String address;
-@JsonProperty("employer")
-private String employer;
-@JsonProperty("email")
-private String email;
-@JsonProperty("city")
-private String city;
-@JsonProperty("state")
-private String state;
-//Getter and Setter removed for brevity
-
-// This method is used to convert an instance of Account class to map. 
-// This is done because IndexRequest accepts a map as a source.
-public static Map&lt;String, Object&gt; getAsMap(final Account account) {
-  return OBJECT_MAPPER.convertValue(account, new TypeReference&lt;Map&lt;String, Object&gt;&gt;() {
-      });
-  }  
-}
-
-</code></pre><p>We have one another class called <code>AccountManager</code> which reads the data from the file and writes into the Elasticsearch index:</p><pre class="line-numbers language-java"><code>/**
- * The type Account manager.
- */
-public class AccountManager {
-
-  private final RestHighLevelClient restHighLevelClient;
-
-  /**
-   *     Instantiates a new Account manager.
-   *
-   * @param restHighLevelClient the rest high level client
-   */
-  public AccountManager(final RestHighLevelClient restHighLevelClient) {
-    this.restHighLevelClient = restHighLevelClient;
-  }
-
-  /**
-   * Read data from the file and return as a List&lt;Account&gt;.
-   *
-   * @param fileName the file name
-   * @return the list
-   * @throws IOException the io exception
-   */
-  public List&lt;Account&gt; readAccounts(String fileName) throws IOException {
-    final File file = new File(fileName);
-    final Account[] accounts = new ObjectMapper().readValue(file, Account[].class);
-    return Arrays.asList(accounts);
-  }
-
-  /**
-   * Write accounts data into Elasticsearch
-   *
-   * @param accounts  the accounts
-   * @param indexName the index name
-   * @return the bulk response
-   * @throws IOException the io exception
-   */
-  public BulkResponse writeAccounts(List&lt;Account&gt; accounts, String indexName) throws IOException {
-    final var bulkRequest = new BulkRequest();
-    accounts.forEach(account -&gt; {
-      final var indexRequest = new IndexRequest(indexName);
-      indexRequest.source(Account.getAsMap(account));
-      bulkRequest.add(indexRequest);
-    });
-    return restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
-  }
-}
-</code></pre><p>The important thing to notice here is how we are creating the <code>BulkRequest</code> (Line#39-44). For each <code>Account</code> in the list, we are creating a new <code>IndexRequest</code> with the given index name and then passing the current account data as a map to it, which is then added to the instance of bulk request.</p><p>Once the bulk request is prepared we are calling&nbsp;<code>restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT)</code> to insert data into Elasticsearch.</p><h2 id="testingnbsp">Testing&nbsp;</h2><p>The following is a test to write data into Elasticsearch:</p><pre class="line-numbers language-java"><code>  @Test
-  public void writeAccountsValidAccountAndIndexNameShouldReturnBulkResponse() throws IOException {
-    final URL resource = AccountManager.class.getClassLoader()
-        .getResource("accounts.json");
-    Assertions.assertThat(resource).isNotNull();
-    final List&lt;Account&gt; accounts = accountManager.readAccounts(resource.getFile());
-    final var bulkItemResponses = accountManager.writeAccounts(accounts, "accounts_test");
-    Assertions.assertThat(bulkItemResponses.hasFailures()).isFalse();
-    Assertions.assertThat(bulkItemResponses).isNotEmpty().hasSize(1000);
-  }</code></pre><h2 id="references">References</h2><ul><li>https://pixabay.com/photos/dance-schools-mosquitoes-mass-1837658/?download</li><li>https://github.com/elastic/elasticsearch/blob/master/docs/src/test/resources/accounts.json<br></li><li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/master/java-rest-high.html<br></li></ul><aside><ul class="post-tag"><li><a href="https://imteyazahmad.com/amp/tags/elasticsearch/">Elasticsearch</a></li><li><a href="https://imteyazahmad.com/amp/tags/high-level-rest-client/">high level rest client</a></li><li><a href="https://imteyazahmad.com/amp/tags/java/">Java</a></li></ul><div class="post-share"><amp-social-share type="system" width="40" height="40" data-param-text="Elasticsearch: Bulk Insert using Java High Level Rest Client"></amp-social-share><amp-social-share type="facebook" width="40" height="40" data-param-app_id="" data-param-text="Elasticsearch: Bulk Insert using Java High Level Rest Client" data-param-href="https://imteyazahmad.com/amp/elasticsearch-bulk-insert-using/"></amp-social-share><amp-social-share type="twitter" width="40" height="40" data-param-text="Elasticsearch: Bulk Insert using Java High Level Rest Client" data-param-url="https://imteyazahmad.com/amp/elasticsearch-bulk-insert-using/"></amp-social-share><amp-social-share type="pinterest" width="40" height="40" data-param-url="https://imteyazahmad.com/amp/elasticsearch-bulk-insert-using/"></amp-social-share><amp-social-share type="tumblr" width="40" height="40" data-param-text="Elasticsearch: Bulk Insert using Java High Level Rest Client" data-param-url="https://imteyazahmad.com/amp/elasticsearch-bulk-insert-using/"></amp-social-share><amp-social-share type="whatsapp" width="40" height="40" data-param-text="Elasticsearch: Bulk Insert using Java High Level Rest Client" data-param-url="https://imteyazahmad.com/amp/elasticsearch-bulk-insert-using/"></amp-social-share></div></aside></div></article><nav class="post-pagination wrap-inner"><div class="post-pagination-prev"><span>Previous Post</span> <a href="https://imteyazahmad.com/amp/elasticsearch-searching-using-java-high-level-rest-client/">Elasticsearch: Query using Java High Level Rest Client</a></div></nav></main><amp-animation id="showAnim" layout="nodisplay"><script type="application/json">{
+  text-align: center; }</style><style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><script async src="https://cdn.ampproject.org/v0.js"></script><script custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js" async></script><script custom-element="amp-position-observer" src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js" async></script></head><body><nav class="navbar wrap-inner" id="top"><div><a on="tap:navbar-sidebar.toggle" class="navbar-sidebar-toggle" title="Menu">Menu</a> <a class="logo logo-text" href="https://imteyazahmad.com/amp/">imteyazahmad.com</a></div></nav><main class="wrap-page"><div class="page-title"><h1>high level rest client <sup>(3)</sup></h1></div><article class="card"><a href="https://imteyazahmad.com/amp/elasticsearch-bulk-insert-using/"><amp-img src="https://imteyazahmad.com/media/posts/6/dance-schools-1837658_cropped-2.jpg" alt="" srcset="https://imteyazahmad.com/media/posts/6/responsive/dance-schools-1837658_cropped-2-xs.jpg 300w ,https://imteyazahmad.com/media/posts/6/responsive/dance-schools-1837658_cropped-2-sm.jpg 480w ,https://imteyazahmad.com/media/posts/6/responsive/dance-schools-1837658_cropped-2-md.jpg 768w" sizes="(max-width: 768px) 100vw, 768px" height="1280" layout="responsive" width="1920"></amp-img></a><div class="card-text"><h2><a href="https://imteyazahmad.com/amp/elasticsearch-bulk-insert-using/">Elasticsearch: Bulk Insert using Java High Level Rest Client</a></h2><p>In our previous post, we saw how to insert data into&hellip;</p><p class="card-meta">By <a href="https://imteyazahmad.com/amp/authors/imteyaz-ahmad/" rel="nofollow" title="Imteyaz Ahmad">Imteyaz Ahmad</a> <time datetime="2021-04-10T09:46">April 10, 2021</time></p></div></article><article class="card"><a href="https://imteyazahmad.com/amp/elasticsearch-searching-using-java-high-level-rest-client/"><amp-img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920-2.jpg" alt="" srcset="https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-2-xs.jpg 300w ,https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-2-sm.jpg 480w ,https://imteyazahmad.com/media/posts/4/responsive/hand-1248053_1920-2-md.jpg 768w" sizes="(max-width: 768px) 100vw, 768px" height="1280" layout="responsive" width="1920"></amp-img></a><div class="card-text"><h2><a href="https://imteyazahmad.com/amp/elasticsearch-searching-using-java-high-level-rest-client/">Elasticsearch: Query using Java High Level Rest Client</a></h2><p>In the previous post we saw how to configure Elasticsearch Java&hellip;</p><p class="card-meta">By <a href="https://imteyazahmad.com/amp/authors/imteyaz-ahmad/" rel="nofollow" title="Imteyaz Ahmad">Imteyaz Ahmad</a> <time datetime="2021-04-07T10:03">April 7, 2021</time></p></div></article><article class="card"><a href="https://imteyazahmad.com/amp/configuring-elasticsearch-java-high-level-rest-client-2/"><amp-img src="https://imteyazahmad.com/media/posts/3/ball-563972_1920-2.jpg" alt="" srcset="https://imteyazahmad.com/media/posts/3/responsive/ball-563972_1920-2-xs.jpg 300w ,https://imteyazahmad.com/media/posts/3/responsive/ball-563972_1920-2-sm.jpg 480w ,https://imteyazahmad.com/media/posts/3/responsive/ball-563972_1920-2-md.jpg 768w" sizes="(max-width: 768px) 100vw, 768px" height="1280" layout="responsive" width="1920"></amp-img></a><div class="card-text"><h2><a href="https://imteyazahmad.com/amp/configuring-elasticsearch-java-high-level-rest-client-2/">Elasticsearch: Java High Level Rest Client</a></h2><p>This article describe how to configure the new Elasticsearch Java High&hellip;</p><p class="card-meta">By <a href="https://imteyazahmad.com/amp/authors/imteyaz-ahmad/" rel="nofollow" title="Imteyaz Ahmad">Imteyaz Ahmad</a> <time datetime="2021-04-02T17:05">April 2, 2021</time></p></div></article></main><amp-animation id="showAnim" layout="nodisplay"><script type="application/json">{
                     "duration": "200ms",
                     "fill": "both",
                     "iterations": "1",
