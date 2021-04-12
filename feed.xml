@@ -3,12 +3,143 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-12T17:51:58+05:30</updated>
+    <updated>2021-04-12T19:33:34+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
     <id>https://imteyazahmad.com</id>
 
+    <entry>
+        <title>Elasticsearch: A Short Introduction to Ingest Pipelines</title>
+        <author>
+            <name>Imteyaz Ahmad</name>
+        </author>
+        <link href="https://imteyazahmad.com/elasticsearch-pre-indexing-transformation-using-ingest-pipelines/"/>
+        <id>https://imteyazahmad.com/elasticsearch-pre-indexing-transformation-using-ingest-pipelines/</id>
+            <category term="ingest pipeline"/>
+            <category term="Java"/>
+            <category term="Elasticsearch"/>
+
+        <updated>2021-04-12T19:33:34+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://imteyazahmad.com/media/posts/7/digitization-5140055_1920.jpg" alt="" />
+                     While indexing data we need to apply some changes that are&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://imteyazahmad.com/media/posts/7/digitization-5140055_1920.jpg" alt="" />
+                
+  <p id="introduction">
+    While indexing data we need to apply some changes that are common to all the documents. We can achieve that with some custom logic while indexing the documents. However, that can take more efforts and can be error prone. Elasticsearch also provide an inbuilt functionality called <code>Ingest Pipelines</code> to achieve some of the transformation.
+  </p>
+
+    <h2 id="introduction">
+      Introduction
+    </h2>
+
+  <p>
+    Ingest pipelines provide mean to apply some common transformations before indexing the document. e.g If we want to set a field called&nbsp;<code>writeTime</code> in each of the document or converting a field to uppercase.
+  </p>
+
+    <h3 id="prerequisite">
+      Prerequisite
+    </h3>
+
+  <p>
+    The minimum requirement to use ingest pipeline is at least one of the nodes in the cluster must be an <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html" target="_blank"><code>ingest</code></a> node. For more details please follow <a href="https://www.elastic.co/guide/en/elasticsearch/reference/master/ingest.html#ingest-prerequisites" target="_blank" rel="nofollow noopener">this</a>.
+  </p>
+
+    <h2 id="ingest-pipeline-structure">
+      Ingest Pipeline Structure
+    </h2>
+
+  <p>
+    The following block shows the structure of an ingest pipeline. The description is optional and then we can define a list of one or more <code>processors</code>. A&nbsp;processor is configurable task.&nbsp;
+  </p>
+<pre class="line-numbers  language-json"><code>{
+  "description" : "This is optional",
+  "processors": [
+    {
+      //processor 1
+    },
+    {
+     //processor 2
+    }
+    //
+  ]
+}
+</code></pre>
+
+  <p>
+    These processors run sequentially.&nbsp;
+  </p>
+
+    <h2 id="use-case">
+      Use case
+    </h2>
+
+  <p>
+    We need to add a field called <code>writeTime</code> in each document of an index in the Elasticsearch. The following pipeline achieves the same:
+  </p>
+<pre class="line-numbers  language-json"><code>PUT _ingest/pipeline/write_time_pipeline
+{
+  "description": "Pipeline to add writeTime in the documents",
+  "processors": [
+    {
+      "set": {
+        "field": "writeTime",
+        "value": "{{_ingest.timestamp}}"
+      }
+    }
+}
+</code></pre>
+
+  <p>
+    Once this is done we can use this pipeline in index request as shown below:
+  </p>
+<pre class="line-numbers  language-json"><code>POST my-events/_doc?pipeline=write_time_pipeline
+{
+  "reason": "foo"
+}</code></pre>
+
+  <p>
+    If you are using Java High Level Rest Client then we can use as following:
+  </p>
+<pre class="line-numbers  language-java"><code>final Map&lt;Sring, Object&gt; source = new HashMap&lt;&gt;();
+source.put("reason","foo")
+IndexRequest indexRequest = new IndexRequest("my-events");
+// we are setting the pipeline here to the request
+indexRequest.setPipeline("write_time_pipeline");
+indexRequest.source(source);
+restHighLevelClient.index(indexRequest,RequestOptions.DEFAULT);
+</code></pre>
+
+  <p>
+    Elasticsearch provides a lot of processors.To get a list of available processors we can use node info API as shown below or a detailed list can be found <a href="https://www.elastic.co/guide/en/elasticsearch/reference/master/processors.html" target="_blank" rel="nofollow noopener">here</a>.
+  </p>
+<pre class="line-numbers  language-bash"><code>curl -X GET "localhost:9200/_nodes/ingest?filter_path=nodes.*.ingest.processors&pretty"
+</code></pre>
+
+  <p>
+    I hope this is helpful. If you have any feedback, please feel free to comment.
+  </p>
+
+    <h2 id="references">
+      References
+    </h2>
+
+  <ul>
+    <li>https://pixabay.com/illustrations/digitization-transformation-binary-5140055/</li><li>https://www.elastic.co/guide/en/elasticsearch/reference/master/ingest.html<br></li><li>https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html<br></li><li>https://www.elastic.co/guide/en/elasticsearch/reference/master/ingest.html#ingest-prerequisites<br></li><li>https://www.elastic.co/guide/en/elasticsearch/reference/master/put-pipeline-api.html<br></li><li>https://www.elastic.co/guide/en/elasticsearch/reference/master/processors.html<br></li>
+  </ul>
+
+  <p>
+    
+  </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Elasticsearch: Bulk Insert using Java High Level Rest Client</title>
         <author>
