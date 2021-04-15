@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-12T19:33:34+05:30</updated>
+    <updated>2021-04-15T20:10:27+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -151,7 +151,7 @@ restHighLevelClient.index(indexRequest,RequestOptions.DEFAULT);
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
-        <updated>2021-04-12T17:51:58+05:30</updated>
+        <updated>2021-04-15T20:09:38+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/6/dance-schools-1837658_cropped-2.jpg" alt="" />
@@ -326,7 +326,7 @@ public class AccountManager {
             <category term="Elasticsearch"/>
             <category term="Analytics"/>
 
-        <updated>2021-04-11T09:44:22+05:30</updated>
+        <updated>2021-04-15T20:10:27+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/4/hand-1248053_1920-2.jpg" alt="" />
