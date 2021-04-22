@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-22T21:32:28+05:30</updated>
+    <updated>2021-04-22T21:38:07+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -20,7 +20,7 @@
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
-        <updated>2021-04-22T21:32:28+05:30</updated>
+        <updated>2021-04-22T21:38:07+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/8/hand-162127.png" alt="" />
@@ -77,7 +77,7 @@ countRequest.query(QueryBuilders.matchQuery("firstname.keyword", "Kelley"));
 final var count = countResponse.getCount(); </code></pre>
 
   <p>
-    I hope it is useful for you. Happy learning :).
+    A working code example is present in this <a href="https://github.com/ahmadimt/elasticsearch_samples/tree/main/count_high_level_rest_client">git repository.</a> I hope it is useful for you. Happy learning :).
   </p>
 
     <h2 id="references">
