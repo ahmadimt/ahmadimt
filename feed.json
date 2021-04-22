@@ -10,6 +10,21 @@
     },
     "items": [
         {
+            "id": "https://imteyazahmad.com/elasticsearch-get-document-counts-using-java-high-level-rest-client/",
+            "url": "https://imteyazahmad.com/elasticsearch-get-document-counts-using-java-high-level-rest-client/",
+            "title": "Elasticsearch: Get Document Counts using Java High Level Rest Client",
+            "summary": " We can use&nbsp;Java High Level Rest Client to get the count&hellip;",
+            "content_html": "\n  <p>\n    We can use&nbsp;Java High Level Rest Client to get the count of documents in an index. It can also be used to execute a query and get the count of matching documents.\n  </p>\n\n    <h2 id=\"introduction\">\n      Introduction\n    </h2>\n\n  <p>\n    The Elasticsearch Java High Level Rest Client provides <code>count API</code> which can be used to get the followings:\n  </p>\n\n  <ul>\n    <li>Total number of documents in the indices or</li><li>Number of documents matching a query.</li>\n  </ul>\n\n    <h2 id=\"query-building\">\n      Query Building\n    </h2>\n\n  <p>\n    In our previous <a href=\"https://imteyazahmad.com/elasticsearch-bulk-insert-using-java-high-level-rest-client/\" class=\"\">post</a> we used account data and inserted in <code>accounts</code> index. I want to know the number of documents where the first name of the account holder is&nbsp;<mark>Kelley</mark>. The following code shows the <code>JSON</code> query for the same:\n  </p>\n<pre class=\"line-numbers  language-bash\"><code>#Number of accounts with Firstname as Kelley\nPOST accounts/_count\n{\"query\":{\"match\":{\"firstname.keyword\":\"Kelley\"}}}\n</code></pre>\n\n  <p>\n    For achieving the same using Java High Level Rest Client, we can build the query as shown below:\n  </p>\n<pre class=\"line-numbers  language-java\"><code>final var countRequest = new CountRequest(\"accounts\");\ncountRequest.query(QueryBuilders.matchQuery(\"firstname.keyword\", \"Kelley\")); \n</code></pre>\n\n    <h2 id=\"query-execution\">\n      Query Execution\n    </h2>\n\n  <p>\n    After this we can use High Level Rest Client to execute the query as following. For configuring the client please follow <a href=\"https://imteyazahmad.com/configuring-elasticsearch-java-high-level-rest-client-2/\">this post</a>.\n  </p>\n<pre class=\"line-numbers  language-java\"><code>final var countResponse = restHighLevelClient.count(countRequest, RequestOptions.DEFAULT);\nfinal var count = countResponse.getCount(); </code></pre>\n\n  <p>\n    I hope it is useful for you. Happy learning :).\n  </p>\n\n    <h2 id=\"references\">\n      References\n    </h2>\n\n  <ul>\n    <li>https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.12/java-rest-high-count.html<br></li><li><span style=\"color: var(--eb-text-primary-color); font-family: var(--font-base); font-size: 1em; font-weight: var(--font-weight-normal);\">https://pixabay.com/vectors/hand-counting-fingers-one-two-162127/</span><br></li>\n  </ul>\n\n  <p>\n    \n  </p>",
+            "image": "https://imteyazahmad.com/media/posts/8/hand-162127.png",
+            "author": {
+                "name": "Imteyaz Ahmad"
+            },
+            "tags": [
+            ],
+            "date_published": "2021-04-22T20:14:36+05:30",
+            "date_modified": "2021-04-22T21:18:14+05:30"
+        },
+        {
             "id": "https://imteyazahmad.com/elasticsearch-pre-indexing-transformation-using-ingest-pipelines/",
             "url": "https://imteyazahmad.com/elasticsearch-pre-indexing-transformation-using-ingest-pipelines/",
             "title": "Elasticsearch: A Short Introduction to Ingest Pipelines",
