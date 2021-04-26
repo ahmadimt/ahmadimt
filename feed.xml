@@ -3,12 +3,117 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-22T21:42:08+05:30</updated>
+    <updated>2021-04-26T21:09:31+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
     <id>https://imteyazahmad.com</id>
 
+    <entry>
+        <title>Elasticsearch: Get Number of Shards Per Node Using Java Rest Client</title>
+        <author>
+            <name>Imteyaz Ahmad</name>
+        </author>
+        <link href="https://imteyazahmad.com/elasticsearch-get-number-of-shards-per-node-using-java-rest-client/"/>
+        <id>https://imteyazahmad.com/elasticsearch-get-number-of-shards-per-node-using-java-rest-client/</id>
+            <category term="high level rest client"/>
+            <category term="Java"/>
+            <category term="Elasticsearch"/>
+
+        <updated>2021-04-26T21:09:31+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://imteyazahmad.com/media/posts/9/ice-1194102_1920.jpg" alt="" />
+                     The number of shards per node is one of the important&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://imteyazahmad.com/media/posts/9/ice-1194102_1920.jpg" alt="" />
+                
+  <p id="references">
+    The number of shards per node is one of the important things to monitor while monitoring the health of the Elasticsearch cluster. In this post, we will see how to get it programmatically.
+  </p>
+
+    <h2 id="introduction">
+      Introduction
+    </h2>
+
+  <p>
+    Elasticsearch stores documents in indices. Each index is made up of one or more <code>shards</code>. Each shard is an instance of Lucene and can be considered as a self-contained index itself with a subset of the data. There are two types of shards: <strong>primary and replica shards</strong>. Primary shards are the ones where writing happens and replica shards contribute to the data redundancy and handling search queries.&nbsp;
+  </p>
+
+  <p>
+    There is no hard limit imposed by Elasticsearch on the number of shards per node. The number of shards on a node is proportional to the amount of heap memory. If you want to check the current heap memory you can use the following command:<br>
+  </p>
+<pre class="line-numbers  language-java"><code>GET _cat/nodes?v=true&h=heap.current
+</code></pre>
+
+  <p>
+    One of the&nbsp;good rules of thumb is to aim for 20 shards per GB of heap memory. So for example, if a node has 10 GB heap memory, then it should have a maximum of 200 shards. To check the shards per node we can use the shard API as shown below:
+  </p>
+<pre class="line-numbers  language-java"><code>GET _cat/shards?v=true&format=json
+// Result of the above command is as following:
+[{"index":".apm-custom-link","shard":"0","prirep":"p","state":"STARTED","docs":"0","store":"208b","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts","shard":"0","prirep":"p","state":"STARTED","docs":"1000","store":"382.3kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":"posts","shard":"0","prirep":"p","state":"STARTED","docs":"1","store":"4.4kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"posts","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":".kibana_1","shard":"0","prirep":"p","state":"STARTED","docs":"50","store":"10.4mb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts_test","shard":"0","prirep":"p","state":"STARTED","docs":"5000","store":"1.7mb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts_test","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":"ilm-history-2-000001","shard":"0","prirep":"p","state":"STARTED","docs":null,"store":null,"ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".kibana_task_manager_1","shard":"0","prirep":"p","state":"STARTED","docs":"6","store":"417.9kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".apm-agent-configuration","shard":"0","prirep":"p","state":"STARTED","docs":"0","store":"208b","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".kibana-event-log-7.9.3-000001","shard":"0","prirep":"p","state":"STARTED","docs":"4","store":"21.6kb","ip":"172.17.0.2","node":"618c33cb6a53"}]
+</code></pre>
+
+  <p>
+    we can then count the number of shards per node.
+  </p>
+
+    <h2 id="using-high-level-rest-client-for-shards-count">
+      Using High Level Rest Client for Shards Count
+    </h2>
+
+  <p>
+    The following code shows how we can achieve the same using the Java High Level Rest client. Please note that we are using the low level rest client here to fetch the details about the shards as I could not find support in high level client. Please have a <a href="https://github.com/elastic/elasticsearch/issues/27205" target="_blank">look</a> into this for the completeness of high level client.
+  </p>
+<pre class="line-numbers  language-java"><code>public Map&lt;String, Integer&gt; getNumberOfShardsPerNode() {
+    try {
+      final Response response = restHighLevelClient.getLowLevelClient()
+          .performRequest(new Request("GET", "/_cat/shards?v&format=json"));
+      final var string = EntityUtils.toString(response.getEntity());
+      final var shardDetails = new ObjectMapper()
+          .readValue(string, new TypeReference&lt;List&lt;NodeDetails&gt;&gt;() {
+          });
+      final var shardsPerNode = shardDetails.stream()
+          .filter(nodeDetails -&gt; !"UNASSIGNED".equalsIgnoreCase(nodeDetails.getState()))
+          .collect(Collectors.groupingBy(NodeDetails::getNode, Collectors.summingInt(value -&gt; 1)));
+      shardsPerNode.forEach((node, shards) -&gt; log.info("Node : {}, Shard count: {}", node, shards));
+      return shardsPerNode;
+
+    } catch (IOException ioException) {
+      ioException.printStackTrace();
+    }
+    return Collections.emptyMap();
+  }</code></pre>
+
+  <p>
+    The above code prints number of shards per node as below:
+  </p>
+<pre class="line-numbers  language-java"><code>Node : 34_b6Yiq, Shard count: 360
+Node : as0aDaPl_, Shard count: 360
+Node : 32_wkiqAf5, Shard count: 360
+</code></pre>
+
+    <h2 id="conclusion">
+      Conclusion
+    </h2>
+
+  <p>
+    In this short post, we saw how to calculate the number of shards per node in the Elasticsearch cluster. Happy learning&nbsp;😊.
+  </p>
+
+    <h2 id="references">
+      References
+    </h2>
+
+  <ul>
+    <li>https://pixabay.com/illustrations/ice-shards-frozen-winter-cold-1194102/</li><li>https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html<br></li><li>https://www.elastic.co/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster<br></li><li>https://github.com/elastic/elasticsearch/issues/27205<br></li>
+  </ul>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Elasticsearch: Get Document Counts using Java High Level Rest Client</title>
         <author>
