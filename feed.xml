@@ -3,7 +3,7 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-04-26T21:09:31+05:30</updated>
+    <updated>2021-05-07T19:48:18+05:30</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
@@ -20,7 +20,7 @@
             <category term="Java"/>
             <category term="Elasticsearch"/>
 
-        <updated>2021-04-26T21:09:31+05:30</updated>
+        <updated>2021-05-07T19:48:18+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://imteyazahmad.com/media/posts/9/ice-1194102_1920.jpg" alt="" />
@@ -54,7 +54,128 @@
   </p>
 <pre class="line-numbers  language-java"><code>GET _cat/shards?v=true&format=json
 // Result of the above command is as following:
-[{"index":".apm-custom-link","shard":"0","prirep":"p","state":"STARTED","docs":"0","store":"208b","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts","shard":"0","prirep":"p","state":"STARTED","docs":"1000","store":"382.3kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":"posts","shard":"0","prirep":"p","state":"STARTED","docs":"1","store":"4.4kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"posts","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":".kibana_1","shard":"0","prirep":"p","state":"STARTED","docs":"50","store":"10.4mb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts_test","shard":"0","prirep":"p","state":"STARTED","docs":"5000","store":"1.7mb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts_test","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":"ilm-history-2-000001","shard":"0","prirep":"p","state":"STARTED","docs":null,"store":null,"ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".kibana_task_manager_1","shard":"0","prirep":"p","state":"STARTED","docs":"6","store":"417.9kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".apm-agent-configuration","shard":"0","prirep":"p","state":"STARTED","docs":"0","store":"208b","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".kibana-event-log-7.9.3-000001","shard":"0","prirep":"p","state":"STARTED","docs":"4","store":"21.6kb","ip":"172.17.0.2","node":"618c33cb6a53"}]
+[
+  {
+    "index": ".apm-custom-link",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "0",
+    "store": "208b",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "accounts",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "1000",
+    "store": "382.3kb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "accounts",
+    "shard": "0",
+    "prirep": "r",
+    "state": "UNASSIGNED",
+    "docs": null,
+    "store": null,
+    "ip": null,
+    "node": null
+  },
+  {
+    "index": "posts",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "1",
+    "store": "4.4kb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "posts",
+    "shard": "0",
+    "prirep": "r",
+    "state": "UNASSIGNED",
+    "docs": null,
+    "store": null,
+    "ip": null,
+    "node": null
+  },
+  {
+    "index": ".kibana_1",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "50",
+    "store": "10.4mb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "accounts_test",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "5000",
+    "store": "1.7mb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "accounts_test",
+    "shard": "0",
+    "prirep": "r",
+    "state": "UNASSIGNED",
+    "docs": null,
+    "store": null,
+    "ip": null,
+    "node": null
+  },
+  {
+    "index": "ilm-history-2-000001",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": null,
+    "store": null,
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": ".kibana_task_manager_1",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "6",
+    "store": "417.9kb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": ".apm-agent-configuration",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "0",
+    "store": "208b",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": ".kibana-event-log-7.9.3-000001",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "4",
+    "store": "21.6kb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  }
+]
 </code></pre>
 
   <p>

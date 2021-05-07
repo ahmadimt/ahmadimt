@@ -1,4 +1,4 @@
-<!doctype html><html amp lang="en-us"><head><meta charset="utf-8"><title>Elasticsearch: Get Number of Shards Per Node Using Java Rest Client - imteyazahmad.com</title><meta name="description" content="An approach to show the number of shards per data node in the Elasticsearch cluster"><link rel="canonical" href="https://imteyazahmad.com/elasticsearch-get-number-of-shards-per-node-using-java-rest-client/"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" type="text/css"><script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script><script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script><script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script><script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://imteyazahmad.com/amp/elasticsearch-get-number-of-shards-per-node-using-java-rest-client/"},"headline":"Elasticsearch: Get Number of Shards Per Node Using Java Rest Client","datePublished":"2021-04-26T21:07","dateModified":"2021-04-26T21:09","image":{"@type":"ImageObject","url":"https://imteyazahmad.com/media/posts/9/ice-1194102_1920.jpg","height":1280,"width":1920},"description":"An approach to show the number of shards per data node in the Elasticsearch cluster","author":{"@type":"Person","name":"Imteyaz Ahmad"},"publisher":{"@type":"Organization","name":"Imteyaz Ahmad"}}</script><style amp-custom>article,
+<!doctype html><html amp lang="en-us"><head><meta charset="utf-8"><title>Elasticsearch: Get Number of Shards Per Node Using Java Rest Client - imteyazahmad.com</title><meta name="description" content="An approach to show the number of shards per data node in the Elasticsearch cluster"><link rel="canonical" href="https://imteyazahmad.com/elasticsearch-get-number-of-shards-per-node-using-java-rest-client/"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" type="text/css"><script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script><script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script><script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script><script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://imteyazahmad.com/amp/elasticsearch-get-number-of-shards-per-node-using-java-rest-client/"},"headline":"Elasticsearch: Get Number of Shards Per Node Using Java Rest Client","datePublished":"2021-04-26T21:07","dateModified":"2021-05-07T19:48","image":{"@type":"ImageObject","url":"https://imteyazahmad.com/media/posts/9/ice-1194102_1920.jpg","height":1280,"width":1920},"description":"An approach to show the number of shards per data node in the Elasticsearch cluster","author":{"@type":"Person","name":"Imteyaz Ahmad"},"publisher":{"@type":"Organization","name":"Imteyaz Ahmad"}}</script><style amp-custom>article,
 aside,
 footer,
 header,
@@ -560,7 +560,128 @@ aside {
  */</style><style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><script async src="https://cdn.ampproject.org/v0.js"></script><script custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js" async></script><script custom-element="amp-position-observer" src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js" async></script></head><body class="bg-white"><nav class="navbar wrap-inner" id="top"><div><a on="tap:navbar-sidebar.toggle" class="navbar-sidebar-toggle" title="Menu">Menu</a> <a class="logo logo-text" href="https://imteyazahmad.com/amp/">imteyazahmad.com</a></div></nav><main class="wrap-page"><article class="post"><figure class="post-featured-image"><amp-img src="https://imteyazahmad.com/media/posts/9/ice-1194102_1920.jpg" alt="" srcset="https://imteyazahmad.com/media/posts/9/responsive/ice-1194102_1920-xs.jpg 300w ,https://imteyazahmad.com/media/posts/9/responsive/ice-1194102_1920-sm.jpg 480w ,https://imteyazahmad.com/media/posts/9/responsive/ice-1194102_1920-md.jpg 768w" sizes="(max-width: 768px) 100vw, 768px" height="1280" layout="responsive" width="1920"></amp-img><figcaption>Image by Allen_Henderson from Pixabay</figcaption></figure><div class="wrap-inner"><header class="post-header"><h1>Elasticsearch: Get Number of Shards Per Node Using Java Rest Client</h1><p class="post-meta">By <a href="https://imteyazahmad.com/amp/authors/imteyaz-ahmad/" rel="nofollow" title="Imteyaz Ahmad">Imteyaz Ahmad</a> <time datetime="2021-04-26T21:07">April 26, 2021</time></p></header><p id="references">The number of shards per node is one of the important things to monitor while monitoring the health of the Elasticsearch cluster. In this post, we will see how to get it programmatically.</p><h2 id="introduction">Introduction</h2><p>Elasticsearch stores documents in indices. Each index is made up of one or more <code>shards</code>. Each shard is an instance of Lucene and can be considered as a self-contained index itself with a subset of the data. There are two types of shards: <strong>primary and replica shards</strong>. Primary shards are the ones where writing happens and replica shards contribute to the data redundancy and handling search queries.&nbsp;</p><p>There is no hard limit imposed by Elasticsearch on the number of shards per node. The number of shards on a node is proportional to the amount of heap memory. If you want to check the current heap memory you can use the following command:<br></p><pre class="line-numbers language-java"><code>GET _cat/nodes?v=true&h=heap.current
 </code></pre><p>One of the&nbsp;good rules of thumb is to aim for 20 shards per GB of heap memory. So for example, if a node has 10 GB heap memory, then it should have a maximum of 200 shards. To check the shards per node we can use the shard API as shown below:</p><pre class="line-numbers language-java"><code>GET _cat/shards?v=true&format=json
 // Result of the above command is as following:
-[{"index":".apm-custom-link","shard":"0","prirep":"p","state":"STARTED","docs":"0","store":"208b","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts","shard":"0","prirep":"p","state":"STARTED","docs":"1000","store":"382.3kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":"posts","shard":"0","prirep":"p","state":"STARTED","docs":"1","store":"4.4kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"posts","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":".kibana_1","shard":"0","prirep":"p","state":"STARTED","docs":"50","store":"10.4mb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts_test","shard":"0","prirep":"p","state":"STARTED","docs":"5000","store":"1.7mb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":"accounts_test","shard":"0","prirep":"r","state":"UNASSIGNED","docs":null,"store":null,"ip":null,"node":null},{"index":"ilm-history-2-000001","shard":"0","prirep":"p","state":"STARTED","docs":null,"store":null,"ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".kibana_task_manager_1","shard":"0","prirep":"p","state":"STARTED","docs":"6","store":"417.9kb","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".apm-agent-configuration","shard":"0","prirep":"p","state":"STARTED","docs":"0","store":"208b","ip":"172.17.0.2","node":"618c33cb6a53"},{"index":".kibana-event-log-7.9.3-000001","shard":"0","prirep":"p","state":"STARTED","docs":"4","store":"21.6kb","ip":"172.17.0.2","node":"618c33cb6a53"}]
+[
+  {
+    "index": ".apm-custom-link",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "0",
+    "store": "208b",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "accounts",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "1000",
+    "store": "382.3kb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "accounts",
+    "shard": "0",
+    "prirep": "r",
+    "state": "UNASSIGNED",
+    "docs": null,
+    "store": null,
+    "ip": null,
+    "node": null
+  },
+  {
+    "index": "posts",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "1",
+    "store": "4.4kb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "posts",
+    "shard": "0",
+    "prirep": "r",
+    "state": "UNASSIGNED",
+    "docs": null,
+    "store": null,
+    "ip": null,
+    "node": null
+  },
+  {
+    "index": ".kibana_1",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "50",
+    "store": "10.4mb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "accounts_test",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "5000",
+    "store": "1.7mb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": "accounts_test",
+    "shard": "0",
+    "prirep": "r",
+    "state": "UNASSIGNED",
+    "docs": null,
+    "store": null,
+    "ip": null,
+    "node": null
+  },
+  {
+    "index": "ilm-history-2-000001",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": null,
+    "store": null,
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": ".kibana_task_manager_1",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "6",
+    "store": "417.9kb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": ".apm-agent-configuration",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "0",
+    "store": "208b",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  },
+  {
+    "index": ".kibana-event-log-7.9.3-000001",
+    "shard": "0",
+    "prirep": "p",
+    "state": "STARTED",
+    "docs": "4",
+    "store": "21.6kb",
+    "ip": "172.17.0.2",
+    "node": "618c33cb6a53"
+  }
+]
 </code></pre><p>we can then count the number of shards per node.</p><h2 id="using-high-level-rest-client-for-shards-count">Using High Level Rest Client for Shards Count</h2><p>The following code shows how we can achieve the same using the Java High Level Rest client. Please note that we are using the low level rest client here to fetch the details about the shards as I could not find support in high level client. Please have a <a href="https://github.com/elastic/elasticsearch/issues/27205" target="_blank">look</a> into this for the completeness of high level client.</p><pre class="line-numbers language-java"><code>public Map&lt;String, Integer&gt; getNumberOfShardsPerNode() {
     try {
       final Response response = restHighLevelClient.getLowLevelClient()
