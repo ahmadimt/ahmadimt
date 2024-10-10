@@ -10,24 +10,6 @@
     },
     "items": [
         {
-            "id": "https://imteyazahmad.com/spring-boot-consuming-a-graphql-api/",
-            "url": "https://imteyazahmad.com/spring-boot-consuming-a-graphql-api/",
-            "title": "Spring Boot : Consuming a GraphQL API",
-            "summary": "Introduction GraphQL in general provides different advantages over REST. Out of the&hellip;",
-            "content_html": "\n    <h2 id=\"introduction\">\n      Introduction\n    </h2>\n\n  <p>\n    GraphQL in general provides different advantages over REST. Out of the several advantages, the one I like the most is native ability to fetch the only required data.\n  </p>\n\n    <h2 id=\"references\">\n      References\n    </h2>\n\n  <ul>\n    <li>https://pixabay.com/illustrations/wave-graphic-curve-abstract-1817646/</li>\n  </ul>",
-            "image": "https://imteyazahmad.com/media/posts/10/wave-1817646_1920.png",
-            "author": {
-                "name": "Imteyaz Ahmad"
-            },
-            "tags": [
-                   "Spring Boot",
-                   "Java",
-                   "GraphQL"
-            ],
-            "date_published": "2021-05-15T01:48:36-04:00",
-            "date_modified": "2021-11-07T08:47:39-05:00"
-        },
-        {
             "id": "https://imteyazahmad.com/elasticsearch-get-number-of-shards-per-node-using-java-rest-client/",
             "url": "https://imteyazahmad.com/elasticsearch-get-number-of-shards-per-node-using-java-rest-client/",
             "title": "Elasticsearch: Get Number of Shards Per Node Using Java Rest Client",

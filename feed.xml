@@ -3,53 +3,12 @@
     <title>imteyazahmad.com</title>
     <link href="https://imteyazahmad.com/feed.xml" rel="self" />
     <link href="https://imteyazahmad.com" />
-    <updated>2021-11-07T08:47:39-05:00</updated>
+    <updated>2021-05-07T10:18:18-04:00</updated>
     <author>
         <name>Imteyaz Ahmad</name>
     </author>
     <id>https://imteyazahmad.com</id>
 
-    <entry>
-        <title>Spring Boot : Consuming a GraphQL API</title>
-        <author>
-            <name>Imteyaz Ahmad</name>
-        </author>
-        <link href="https://imteyazahmad.com/spring-boot-consuming-a-graphql-api/"/>
-        <id>https://imteyazahmad.com/spring-boot-consuming-a-graphql-api/</id>
-        <media:content url="https://imteyazahmad.com/media/posts/10/wave-1817646_1920.png" medium="image" />
-            <category term="Spring Boot"/>
-            <category term="Java"/>
-            <category term="GraphQL"/>
-
-        <updated>2021-05-15T01:48:36-04:00</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://imteyazahmad.com/media/posts/10/wave-1817646_1920.png" alt="" />
-                    Introduction GraphQL in general provides different advantages over REST. Out of the&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://imteyazahmad.com/media/posts/10/wave-1817646_1920.png" class="type:primaryImage" alt="" /></p>
-                
-    <h2 id="introduction">
-      Introduction
-    </h2>
-
-  <p>
-    GraphQL in general provides different advantages over REST. Out of the several advantages, the one I like the most is native ability to fetch the only required data.
-  </p>
-
-    <h2 id="references">
-      References
-    </h2>
-
-  <ul>
-    <li>https://pixabay.com/illustrations/wave-graphic-curve-abstract-1817646/</li>
-  </ul>
-            ]]>
-        </content>
-    </entry>
     <entry>
         <title>Elasticsearch: Get Number of Shards Per Node Using Java Rest Client</title>
         <author>
